@@ -1,0 +1,26 @@
+Distribution module
+===================
+
+This is the module where the real asciidoc work will be performed.
+The way it works is very simple: an assembly copies all the asciidoc inside a staging directory (asciidoc/staging),
+then the asciidoc maven plugin works on those files.
+
+An example assembly descriptor (the one used by this document) could be:
+
+[source,xml,numbered]
+.doc.xml
+----
+include::${root.dir}/distribution/src/assembly/doc.xml[]
+----
+
+As you will notice, the file filtering function is enabled: this allows you to use maven variables inside your asciidoc document.
+
+Last thing to do is to configure the pom.xml file inside the distribution module.
+
+[source,xml,numbered]
+.pom.xml
+----
+include::${root.dir}/distribution/pom.xml[]
+----
+
+You are done. Enjoi!

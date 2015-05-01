@@ -1,0 +1,10 @@
+Module2
+=======
+
+This is an example module included only to demonstrate how to include multiple modules...
+
+[source,java]
+.MyTestClass2.java
+----
+include::${root.dir}/module2/src/main/java/com/test/module2/MyTestClass2.java[tags=myTag2]
+----

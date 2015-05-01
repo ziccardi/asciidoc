@@ -1,0 +1,33 @@
+# Multimodule ASCIIDOC V. ${project.version}
+Massimiliano Ziccardi
+v0.0.1, 2015-04
+:doctype: book
+:icons: font
+:source-highlighter: coderay
+:toc:
+
+This will be the top level part of the documentation and will.
+It can be used to write common parts and to define variables that will be accessible to all the submodules.
+
+This sample project is composed of three modules:
+
+  * distribution 
+  * module1
+  * module2
+  
+The first one is the one that will be in charge of producing the asciidoc output, the other two modules are there 
+just to demonstrate how to create a multimodule asciidoc document.
+
+All the submodules can be included as if they were local with something like:
+
+[source,asciidoc]
+.mydocument.asciidoc
+----
+   include::distribution.asciidoc[leveloffset=+1]
+   include::module1.asciidoc[leveloffset=+1]
+   include::module2.asciidoc[leveloffset=+1]
+----
+
+include::distribution.asciidoc[leveloffset=+1]
+include::module1.asciidoc[leveloffset=+1]
+include::module2.asciidoc[leveloffset=+1]

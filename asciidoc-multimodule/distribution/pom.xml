@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.test</groupId>
+        <artifactId>asciidoc-project</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>distribution</artifactId>
+
+    <properties>
+        <root.dir>${basedir}/..</root.dir>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/doc.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <executions>
+                    <execution>
+                        <id>output-html</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>target/distribution-${project.version}-docs/asciidoc/staging</sourceDirectory>
+                            <sourceDocumentName>testdoc-root.asciidoc</sourceDocumentName>
+                            <sourceHighlighter>coderay</sourceHighlighter>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+
+                            <embedAssets>false</embedAssets>
+                            <attributes>
+                                <!-- Display anchors on html document -->
+                                <sectanchors>true</sectanchors>
+                                <toclevels>3</toclevels>
+                                <sourceDir>../java</sourceDir>
+                                <imagesdir>.</imagesdir>
+                            </attributes>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
