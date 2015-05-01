@@ -1,0 +1,18 @@
+# ASCIIDOC on multimodule project
+
+This project wants to be an example of how to use ASCIIDOC to document a multimodule project.
+The structure of the project is the following:
+
+   parent
+      src/main/asciidoc
+      module1
+         src/main/asciidoc
+      module2
+        src/main/asciidoc
+      distribution
+        src/main/asciidoc
+        
+module1 and module2 are there only for demonstration purpose, while the *distribution* module is the one that does the real work.
+
+Building the project an HTML file is produced inside 'target/generated-docs' folder of the distribution module.
+That document is built by assembling all the ASCIIDOC files found in each module.
